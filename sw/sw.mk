@@ -30,7 +30,7 @@ CHS_SW_32_OBJCOPY := $(CHS_SW_32_GCC_BINROOT)/riscv32-unknown-elf-objcopy
 CHS_SW_32_OBJDUMP := $(CHS_SW_32_GCC_BINROOT)/riscv32-unknown-elf-objdump
 CHS_SW_32_LTOPLUG := $(shell find $(shell dirname $(CHS_SW_32_GCC_BINROOT))/libexec/gcc/riscv32-unknown-elf/**/liblto_plugin.so)
 
-CHS_SW_32_FLAGS ?= -DOT_PLATFORM_RV32 -march=rv32imc -mabi=ilp32 
+CHS_SW_32_FLAGS ?= -DOT_PLATFORM_RV32 -march=rv32imc_zicsr -mabi=ilp32 
 
 ifeq (${CHS_XLEN}, 64)
 

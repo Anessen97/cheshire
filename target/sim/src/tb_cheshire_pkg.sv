@@ -21,9 +21,9 @@ package tb_cheshire_pkg;
       cheshire_cfg_t ret = DefaultCfg;
        ret.Vga = 0;
        ret.SerialLink = 0;
-       ret.AxiUserWidth = 64;
-       // ret.AxiDataWidth = 64;
-       // ret.AddrWidth = 64;
+       ret.AxiDataWidth = 32;
+       ret.AddrWidth = 32;
+       ret.LlcOutRegionEnd = 'hFFFF_FFFF;
       return ret;
     endfunction // gen_cheshire_emb_cfg
 

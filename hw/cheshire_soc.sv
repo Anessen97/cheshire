@@ -324,7 +324,7 @@ module cheshire_soc import cheshire_pkg::*; #(
     .AxiUserAsId      ( 1 ),
     .AxiUserIdMsb     ( Cfg.AxiUserAmoMsb ),
     .AxiUserIdLsb     ( Cfg.AxiUserAmoLsb ),
-    .RiscvWordWidth   ( 64 ),
+    .RiscvWordWidth   ( 32 ),
     .NAxiCuts         ( Cfg.RegAmoNumCuts ),
     .axi_req_t        ( axi_slv_req_t ),
     .axi_rsp_t        ( axi_slv_rsp_t )
@@ -359,6 +359,7 @@ module cheshire_soc import cheshire_pkg::*; #(
   axi_to_reg_v2 #(
     .AxiAddrWidth ( Cfg.AddrWidth    ),
     .AxiDataWidth ( Cfg.AxiDataWidth ),
+    //.AxiDataWidth ( 64 ),
     .AxiIdWidth   ( AxiSlvIdWidth    ),
     .AxiUserWidth ( Cfg.AxiUserWidth ),
     .RegDataWidth ( 32 ),
@@ -450,7 +451,7 @@ module cheshire_soc import cheshire_pkg::*; #(
       .AxiUserAsId      ( 1 ),
       .AxiUserIdMsb     ( Cfg.AxiUserAmoMsb ),
       .AxiUserIdLsb     ( Cfg.AxiUserAmoLsb ),
-      .RiscvWordWidth   ( 64 ),
+      .RiscvWordWidth   ( 32 ),
       .NAxiCuts         ( Cfg.LlcAmoNumCuts ),
       .axi_req_t        ( axi_slv_req_t ),
       .axi_rsp_t        ( axi_slv_rsp_t )
@@ -806,6 +807,7 @@ module cheshire_soc import cheshire_pkg::*; #(
   axi_riscv_atomics_structs #(
     .AxiAddrWidth     ( Cfg.AddrWidth    ),
     .AxiDataWidth     ( Cfg.AxiDataWidth ),
+    //.AxiDataWidth     ( 64 ),
     .AxiIdWidth       ( AxiSlvIdWidth    ),
     .AxiUserWidth     ( Cfg.AxiUserWidth ),
     .AxiMaxReadTxns   ( Cfg.DbgMaxReadTxns  ),
@@ -813,7 +815,7 @@ module cheshire_soc import cheshire_pkg::*; #(
     .AxiUserAsId      ( 1 ),
     .AxiUserIdMsb     ( Cfg.AxiUserAmoMsb ),
     .AxiUserIdLsb     ( Cfg.AxiUserAmoLsb ),
-    .RiscvWordWidth   ( 64 ),
+    .RiscvWordWidth   ( 32 ),
     .NAxiCuts         ( Cfg.DbgAmoNumCuts ),
     .axi_req_t        ( axi_slv_req_t ),
     .axi_rsp_t        ( axi_slv_rsp_t )
@@ -1372,7 +1374,7 @@ module cheshire_soc import cheshire_pkg::*; #(
       .AxiUserAsId      ( 1 ),
       .AxiUserIdMsb     ( Cfg.AxiUserAmoMsb ),
       .AxiUserIdLsb     ( Cfg.AxiUserAmoLsb ),
-      .RiscvWordWidth   ( 64 ),
+      .RiscvWordWidth   ( 32 ),
       .NAxiCuts         ( Cfg.DmaConfAmoNumCuts ),
       .axi_req_t        ( axi_slv_req_t ),
       .axi_rsp_t        ( axi_slv_rsp_t )
