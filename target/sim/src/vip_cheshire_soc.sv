@@ -304,13 +304,13 @@ module vip_cheshire_soc import cheshire_pkg::*; #(
          if (read_section(sec_addr, bf, sec_len)) $fatal(1, "[JTAG] Failed to read ELF section!");
          jtag_write(dm::SBCS, JtagInitSbcs, 1, 1);
          // Write address as 64-bit double
-         //jtag_write(dm::SBAddress1, sec_addr[63:32]);
+         jtag_write(dm::SBAddress1, sec_addr[63:32]);
          jtag_write(dm::SBAddress0, sec_addr[31:0]);
          for (longint i = 0; i <= sec_len ; i += 4) begin
 	          bit checkpoint = (i != 0 && i % 512 == 0);
 	          if (checkpoint)
 	            $display("[JTAG] - %0d/%0d bytes (%0d%%)", i, sec_len, i*100/(sec_len>1 ? sec_len-1 : 1));
-	          //jtag_write(dm::SBData1, {bf[i+7], bf[i+6], bf[i+5], bf[i+4]});
+	          jtag_write(dm::SBData1, {bf[i+7], bf[i+6], bf[i+5], bf[i+4]}, 0, 1);
 	          jtag_write(dm::SBData0, {bf[i+3], bf[i+2], bf[i+1], bf[i]}, 0, 1);
          end
       end
@@ -341,7 +341,7 @@ module vip_cheshire_soc import cheshire_pkg::*; #(
       doub_bt entry;
       jtag_elf_halt_load(binary, entry);
       // Repoint execution
-      // jtag_write(dm::Data1, entry[63:32]);
+      jtag_write(dm::Data1, entry[63:32]);
       jtag_write(dm::Data0, entry[31:0]);
       jtag_write(dm::Command, 32'h0023_07b1, 0, 1);
       // Resume hart 0
