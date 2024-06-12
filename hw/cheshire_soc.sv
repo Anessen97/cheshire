@@ -192,6 +192,7 @@ module cheshire_soc import cheshire_pkg::*; #(
   // Define needed parameters
   localparam int unsigned AxiStrbWidth  = Cfg.AxiDataWidth / 8;
   localparam int unsigned AxiSlvIdWidth = Cfg.AxiMstIdWidth + $clog2(AxiIn.num_in);
+  localparam int unsigned RiscvWordWidth = riscv::XLEN;
 
   // Type for address map entries
   typedef struct packed {
@@ -324,7 +325,7 @@ module cheshire_soc import cheshire_pkg::*; #(
     .AxiUserAsId      ( 1 ),
     .AxiUserIdMsb     ( Cfg.AxiUserAmoMsb ),
     .AxiUserIdLsb     ( Cfg.AxiUserAmoLsb ),
-    .RiscvWordWidth   ( 32 ),
+    .RiscvWordWidth   ( RiscvWordWidth ),
     .NAxiCuts         ( Cfg.RegAmoNumCuts ),
     .axi_req_t        ( axi_slv_req_t ),
     .axi_rsp_t        ( axi_slv_rsp_t )
@@ -451,7 +452,7 @@ module cheshire_soc import cheshire_pkg::*; #(
       .AxiUserAsId      ( 1 ),
       .AxiUserIdMsb     ( Cfg.AxiUserAmoMsb ),
       .AxiUserIdLsb     ( Cfg.AxiUserAmoLsb ),
-      .RiscvWordWidth   ( 32 ),
+      .RiscvWordWidth   ( RiscvWordWidth ),
       .NAxiCuts         ( Cfg.LlcAmoNumCuts ),
       .axi_req_t        ( axi_slv_req_t ),
       .axi_rsp_t        ( axi_slv_rsp_t )
@@ -815,7 +816,7 @@ module cheshire_soc import cheshire_pkg::*; #(
     .AxiUserAsId      ( 1 ),
     .AxiUserIdMsb     ( Cfg.AxiUserAmoMsb ),
     .AxiUserIdLsb     ( Cfg.AxiUserAmoLsb ),
-    .RiscvWordWidth   ( 32 ),
+    .RiscvWordWidth   ( RiscvWordWidth ),
     .NAxiCuts         ( Cfg.DbgAmoNumCuts ),
     .axi_req_t        ( axi_slv_req_t ),
     .axi_rsp_t        ( axi_slv_rsp_t )
@@ -1374,7 +1375,7 @@ module cheshire_soc import cheshire_pkg::*; #(
       .AxiUserAsId      ( 1 ),
       .AxiUserIdMsb     ( Cfg.AxiUserAmoMsb ),
       .AxiUserIdLsb     ( Cfg.AxiUserAmoLsb ),
-      .RiscvWordWidth   ( 32 ),
+      .RiscvWordWidth   ( RiscvWordWidth ),
       .NAxiCuts         ( Cfg.DmaConfAmoNumCuts ),
       .axi_req_t        ( axi_slv_req_t ),
       .axi_rsp_t        ( axi_slv_rsp_t )

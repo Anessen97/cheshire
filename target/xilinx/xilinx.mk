@@ -40,8 +40,18 @@ CHS_XILINX_BOARDS := genesys2 vcu128
 CHS_XILINX_IPS_genesys2 := clkwiz vio mig7s
 CHS_XILINX_IPS_vcu128   := clkwiz vio ddr4
 
+ifeq (${CHS_XLEN}, 64)
+
 $(CHS_XILINX_DIR)/scripts/add_sources.%.tcl: $(CHS_ROOT)/Bender.yml
 	$(BENDER) script vivado -t fpga -t cv64a6_imafdcsclic_sv39 -t cva6 -t $* > $@
+endif
+
+ifeq (${CHS_XLEN}, 32)
+
+$(CHS_XILINX_DIR)/scripts/add_sources.%.tcl: $(CHS_ROOT)/Bender.yml
+	$(BENDER) script vivado -t fpga -t cv32a6_convolve -t cva6 -t $* > $@
+
+endif
 
 define chs_xilinx_bit_rule
 $$(CHS_XILINX_DIR)/out/%.$(1).bit: \
