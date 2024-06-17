@@ -167,7 +167,7 @@ module vip_cheshire_soc import cheshire_pkg::*; #(
            ////////////
 
    localparam dm::sbcs_t JtagInitSbcs = dm::sbcs_t'{
-                                                    sbautoincrement: 1'b1, sbreadondata: 1'b1, sbaccess: 2, default: '0};
+                                                    sbautoincrement: 1'b1, sbreadondata: 1'b1, sbaccess: $clog2(riscv::XLEN/8), default: '0};
 
    // Generate clock
    clk_rst_gen #(
