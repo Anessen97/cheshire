@@ -166,11 +166,17 @@ CHS_SIM_ALL += $(CHS_ROOT)/target/sim/vsim/compile.cheshire_soc.tcl
 
 include target/xilinx/xilinx.mk
 
+#############
+# ASIC Flow #
+#############
+
+include target/chip/chip.mk
+
 #################################
 # Phonies (KEEP AT END OF FILE) #
 #################################
 
-.PHONY: chs-all chs-nonfree-init chs-clean-deps chs-sw-all chs-hw-all chs-bootrom-all chs-sim-all chs-xilinx-all chs-clean-sw
+.PHONY: chs-all chs-nonfree-init chs-clean-deps chs-sw-all chs-hw-all chs-bootrom-all chs-sim-all chs-xilinx-all chs-chip-all chs-clean-sw
 
 CHS_ALL += $(CHS_SW_ALL) $(CHS_HW_ALL) $(CHS_SIM_ALL)
 
@@ -180,3 +186,4 @@ chs-hw-all:      $(CHS_HW_ALL)
 chs-bootrom-all: $(CHS_BOOTROM_ALL)
 chs-sim-all:     $(CHS_SIM_ALL)
 chs-xilinx-all:  $(CHS_XILINX_ALL)
+chs-chip-all:    $(CHS_CHIP_ALL)

@@ -43,6 +43,10 @@ target/xilinx/out
 target/xilinx/scripts/add_sources.*
 vivado*
 
+# Synthesis generated files
+target/chip/ic
+target/chip/scripts/analyze_chip.tcl
+
 # Bender lock
 Bender.lock
 
