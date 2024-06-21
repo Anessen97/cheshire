@@ -11,6 +11,11 @@ $(CHS_CHIP_DIR)/ic/:
 #i$(CHS_CHIP_DIR)/synopsys/: $(SYNOPSYS)
 
 $(CHS_CHIP_DIR)/scripts/analyze_chip.tcl: $(CHS_CHIP_DIR)/ic/
+	
+ifeq ($(CHS_XLEN), 32)
 	bender script synopsys -t asic -t cv32a6_convolve -t cva6 > $@
+else
+	bender script synopsys -t asic -t cv64a6_imafdcsclic_sv39 -t cva6 > $@
+endif
 
 CHS_CHIP_ALL = $$(CHS_CHIP_DIR)/scripts/analyze_chip.tcl
